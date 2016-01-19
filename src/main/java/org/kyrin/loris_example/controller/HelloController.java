@@ -24,7 +24,7 @@ public class HelloController {
 	private UserService userService;
 
 	@Action(value = "get:/time")
-	public Data currentTime(Param paramMap) {
+	public Data currentTime() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("time", System.currentTimeMillis());
 		Data data = new Data(model);
@@ -32,7 +32,7 @@ public class HelloController {
 	}
 	
 	@Action(value = "get:/timejsp")
-	public View currentTimejsp(Param paramMap) {
+	public View currentTimejsp() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("date", System.currentTimeMillis());
 		View view=new View("index.jsp");
@@ -40,7 +40,7 @@ public class HelloController {
 		return view;
 	}
 	
-	@Action(value="post:/user")
+	@Action(value="get:/user")
 	public Data getUser(Param paramMap){
 		int id=paramMap.getInt("id");
 		List<Map<String,Object>> result=userService.getUser(id);
